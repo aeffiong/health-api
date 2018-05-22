@@ -6,7 +6,7 @@ var topics = ["Exercise", "Weight Lifting", "Crossfit", "HIIT Training", "Protei
 console.log(topics);
 
 $(document).ready(function(){
-// function not working - also is this referring to topics array?
+// api call not working - also is this referring to topics array?
 
 function displayTopicInfo() {
     // var topic = $(this).attr("data-name");
@@ -23,12 +23,17 @@ function displayTopicInfo() {
         console.log(response);
         console.log(response.data[0].rating);
         console.log("hi");
+
+        
         // adding divs and p's to the screen to display the information to the screen
         var topicDiv = $("<div>");
         var ratings = $("<p>");
         ratings.text(JSON.stringify(response.data.rating));
         topicDiv.append(ratings);
         $("#gifSpace").append(topicDiv);
+        // add a function to get the images to show up using still url
+        // add a function to get gif to play by using original url
+        // add a function to pause gif using image still url
     });
 }
 
@@ -55,6 +60,11 @@ $("#add-topic").on("click", function(event){
     topics.push(topic);
     createButtons();
 })
+
+// add a function to get the images to show up using still url
+// add a function to get gif to play by using original url
+// add a function to pause gif using image still url
+
 // adding click functionality to the buttons on screen
 $(document).on("click", ".topic", displayTopicInfo);
 
