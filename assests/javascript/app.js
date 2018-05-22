@@ -9,12 +9,13 @@ $(document).ready(function(){
 // api call not working - also is this referring to topics array?
 
 function displayTopicInfo() {
-    // var topic = $(this).attr("data-name");
-    var topic  = "puppy";
-    console.log(this);
+    var topic = $(this).attr("data-name");
+    // var topic  = "puppy";
+    console.log(topic);
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=ZJrHPWcQ0UesjHkVgQJeoKjaqOrdFD9f&limit=10&rating=g";
     console.log(queryURL);
     console.log(topic);
+    
 
     $.ajax({
         url: queryURL,
@@ -26,11 +27,14 @@ function displayTopicInfo() {
 
         
         // adding divs and p's to the screen to display the information to the screen
-        var topicDiv = $("<div>");
+        var imageUrl = response.data[0].url;
+        console.log(imageUrl);
+        var topicImage = $("<img>");
+        topicImage.attr("src", imageUrl);
         var ratings = $("<p>");
         ratings.text(JSON.stringify(response.data.rating));
-        topicDiv.append(ratings);
-        $("#gifSpace").append(topicDiv);
+        topicImage.append(ratings);
+        $("#gifSpace").append(topicImage);
         // add a function to get the images to show up using still url
         // add a function to get gif to play by using original url
         // add a function to pause gif using image still url
@@ -62,6 +66,7 @@ $("#add-topic").on("click", function(event){
 })
 
 // add a function to get the images to show up using still url
+   
 // add a function to get gif to play by using original url
 // add a function to pause gif using image still url
 
