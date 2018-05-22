@@ -1,4 +1,9 @@
 // define the variables including the array or topic strings and the api url
+// api key = ZJrHPWcQ0UesjHkVgQJeoKjaqOrdFD9f
+
+var topics = ["Exercise", "Weight Lifting", "Crossfit", "HIIT Training", "Protein", "Carbs", 
+"Healthy Fats", "Healthy Eating", "Sleep", "Puppies"];
+console.log(topics);
 
 // start creating functions: we will need:
 // document on ready
