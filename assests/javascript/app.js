@@ -30,9 +30,12 @@ function displayTopicInfo() {
         for(var i =0; i<response.data.length; i++) {
             var gifWrapper = $("<div>");
             var imageUrl = response.data[i].images.fixed_height.url;
+            var imageStill = response.data[i].images.fixed_height_still.url;
             console.log(imageUrl);
             var topicImage = $("<img>");
-            topicImage.attr("src", imageUrl);
+            // adding classes and data attributes to the gis so we can use that to start and stop it
+            topicImage.addClass("gif");
+            topicImage.attr("src", imageStill).attr("data-still", imageStill).attr("data-animate", imageUrl).attr("data-state", "still");
             console.log(topicImage);
             var ratings = $("<p>");
             ratings.text("Rating: " + response.data[i].rating);
@@ -41,9 +44,19 @@ function displayTopicInfo() {
             gifWrapper.prepend(topicImage);
             $("#gifSpace").append(gifWrapper);
         }
-        // add a function to get the images to show up using still url
-        // add a function to get gif to play by using original url
-        // add a function to pause gif using image still url
+        // on click event of the gif, start it, when clicked again, stop it
+        $(".gif").on("click", function(event){
+            var state = $(this).attr("data-state");
+            console.log(state);
+            if(state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+            } else {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+            }
+        })
+      
     });
 }
 
@@ -72,9 +85,15 @@ $("#add-topic").on("click", function(event){
     // add user input to topics array
     topics.push(topic);
     createButtons();
-})
+});
 
 // add a function to get the images to show up using still url
+// $("#buttons-view").on("click", function(event){
+//     for(var i = 0; i < topics.length; i++) {
+
+//     }
+
+// });
    
 // add a function to get gif to play by using original url
 // add a function to pause gif using image still url
