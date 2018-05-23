@@ -27,14 +27,20 @@ function displayTopicInfo() {
 
         
         // adding divs and p's to the screen to display the information to the screen
-        var imageUrl = response.data[0].url;
-        console.log(imageUrl);
-        var topicImage = $("<img>");
-        topicImage.attr("src", imageUrl);
-        var ratings = $("<p>");
-        ratings.text(JSON.stringify(response.data.rating));
-        topicImage.append(ratings);
-        $("#gifSpace").append(topicImage);
+        for(var i =0; i<response.data.length; i++) {
+            var gifWrapper = $("<div>");
+            var imageUrl = response.data[i].images.fixed_height.url;
+            console.log(imageUrl);
+            var topicImage = $("<img>");
+            topicImage.attr("src", imageUrl);
+            console.log(topicImage);
+            var ratings = $("<p>");
+            ratings.text("Rating: " + response.data[i].rating);
+            console.log(ratings);
+            gifWrapper.append(ratings);
+            gifWrapper.prepend(topicImage);
+            $("#gifSpace").append(gifWrapper);
+        }
         // add a function to get the images to show up using still url
         // add a function to get gif to play by using original url
         // add a function to pause gif using image still url
@@ -51,6 +57,9 @@ function createButtons() {
             newButton.addClass("topic");
             newButton.attr("data-name", topics[i]);
             newButton.text(topics[i]);
+            // trying to add space between buttons
+            pTag = $("<p>");
+            newButton.append(pTag);
             $("#buttons-view").append(newButton);
             console.log(topics[i]);
         }
