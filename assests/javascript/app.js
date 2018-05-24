@@ -42,7 +42,7 @@ function displayTopicInfo() {
             console.log(ratings);
             gifWrapper.append(ratings);
             gifWrapper.prepend(topicImage);
-            $("#gifSpace").append(gifWrapper);
+            $("#gifSpace").prepend(gifWrapper);
         }
         // on click event of the gif, start it, when clicked again, stop it
         $(".gif").on("click", function(event){
@@ -111,3 +111,6 @@ createButtons();
 // to display the list of gifs
 // lists the rating of each gif below the gif
 // start with a still image of the gif, user can click to start gif and click again to pause gif
+
+
+// left to do = get spacing between buttons, styling
