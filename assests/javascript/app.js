@@ -1,8 +1,7 @@
 // define the variables including the array or topic strings and the api url
 // api key = ZJrHPWcQ0UesjHkVgQJeoKjaqOrdFD9f
 
-var topics = ["Exercise", "Weight Lifting", "Crossfit", "HIIT Training", "Protein", "Carbs",
-    "Healthy Fats", "Healthy Eating", "Sleep", "Puppies"];
+var topics = ["Exercise", "Weight Lifting", "Crossfit", "Protein", "Carbs", "Healthy Eating", "Sleep", "Puppies"];
 console.log(topics);
 
 $(document).ready(function(){
@@ -78,6 +77,7 @@ function createButtons() {
         }
 }
 // function to handle what happens with user input and add topic button is clicked
+// need the displayTopicInfo somewhere in here
 $("#add-topic").on("click", function(event){
     event.preventDefault();
     // grab input from text box
@@ -85,6 +85,7 @@ $("#add-topic").on("click", function(event){
     // add user input to topics array
     topics.push(topic);
     createButtons();
+   
 });
 
 // add a function to get the images to show up using still url
@@ -112,5 +113,3 @@ createButtons();
 // lists the rating of each gif below the gif
 // start with a still image of the gif, user can click to start gif and click again to pause gif
 
-
-// left to do = get spacing between buttons, styling
