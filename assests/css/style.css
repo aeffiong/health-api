@@ -4,6 +4,7 @@ body {
 }
 
 button {
+    margin-top: 10px;
     margin-right: 5px;
     background-color: teal;
     color: white;

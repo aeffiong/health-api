@@ -69,9 +69,6 @@ function createButtons() {
             newButton.addClass("topic");
             newButton.attr("data-name", topics[i]);
             newButton.text(topics[i]);
-            // trying to add space between buttons
-            pTag = $("<p>");
-            newButton.append(pTag);
             $("#buttons-view").append(newButton);
             console.log(topics[i]);
         }
@@ -85,6 +82,9 @@ $("#add-topic").on("click", function(event){
     // add user input to topics array
     topics.push(topic);
     createButtons();
+    // clear the input box after the button is created
+    $("#topics-input").val("");
+    
    
 });
 
